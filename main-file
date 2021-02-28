@@ -63,10 +63,12 @@ var server = http.createServer(function(req, res){
 				
 		});
 	}else if(pathname === "/uploadData"){
-		var form = new formidable.IncomingForm();
-		form.parse(req, function(){
-			res.write('')
-		});
+		if(req.method === 'POST'){
+			collectRequestData(){
+				console.log(result);
+				res.end("This is the data ${result.textName}" )
+			}
+		}
 	}else{
 		res.writeHead(200, {'Content-Type' : 'text/html'});
 		res.write('something wrong dude');
